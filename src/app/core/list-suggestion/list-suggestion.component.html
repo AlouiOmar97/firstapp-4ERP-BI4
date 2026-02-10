@@ -1,0 +1,38 @@
+<div class="bg-light">
+    <h1 class="text-center mt-5 mb-5">Liste des Suggestions</h1>
+    <div>
+        <input class="form-control m-2" type="text" placeholder="Rechercher une suggestion" [(ngModel)]="searchTerm">
+        <div class="card m-2" *ngFor="let suggestion of filterSuggestion()">
+        <div class="card-body">
+            <h5 class="card-title"> {{ suggestion.title }} </h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary"> <span class="text-primary">{{ suggestion.category }}</span> {{ suggestion.date | date:'dd MMM yyyy'  }} </h6>
+            <p class="card-text"> {{ suggestion.description }} </p>
+            <p *ngIf="suggestion.status == 'acceptee'" class="badge text-bg-success"> Acceptée </p>
+            <p *ngIf="suggestion.status == 'refusee'" class="badge text-bg-danger"> Refusée </p>
+            <p *ngIf="suggestion.status == 'en_attente'" class="badge text-bg-warning"> En attente </p>
+            <div *ngIf="suggestion.status != 'refusee'">
+                <button (click)="likeSuggestion(suggestion)" class="btn btn-primary"><i class="bi bi-hand-thumbs-up m-2"></i>Like  ({{ suggestion.nbLikes }})  </button>
+                <button (click)="addToFavorite(suggestion)" class="btn btn-secondary m-2"><i class="bi bi-heart m-2"></i>Ajouter aux Favoris</button>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+   <h1 class="text-center mt-5 mb-5">Liste des Favoris</h1>
+    <div>
+
+        <div class="card m-2" *ngFor="let s of favoriteList">
+        <div class="card-body">
+            <h5 class="card-title"> {{ s.title }} </h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary"> <span class="text-primary">{{ s.category }}</span> {{ s.date | date:'dd MMM yyyy'  }} </h6>
+            <p class="card-text"> {{ s.description }} </p>
+            <p *ngIf="s.status == 'acceptee'" class="badge text-bg-success"> Acceptée </p>
+            <p *ngIf="s.status == 'refusee'" class="badge text-bg-danger"> Refusée </p>
+            <p *ngIf="s.status == 'en_attente'" class="badge text-bg-warning"> En attente </p>
+            <div *ngIf="s.status != 'refusee'">
+                <button (click)="likeSuggestion(s)" class="btn btn-primary"><i class="bi bi-hand-thumbs-up m-2"></i>Like  ({{ s.nbLikes }})  </button>
+                <button class="btn btn-secondary m-2"><i class="bi bi-heart m-2"></i>Ajouter aux Favoris</button>
+            </div>
+        </div>
+        </div>
+    </div>

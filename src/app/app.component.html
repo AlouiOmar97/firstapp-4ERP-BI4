@@ -1,7 +1,11 @@
 <app-header></app-header>
-<h1>{{ title + " " + msg }}</h1>
-<p> {{ 1 + 2 + getNumber() }} </p>
-<p>{{ msg }}</p>
-<input class="form-control" type="text" [(ngModel)]="msg" >
-<button class="btn btn-success" (click)="fillMsg()" [disabled]="x">Click me</button>
+<app-list-suggestion></app-list-suggestion>
 <app-footer></app-footer>
+<!--
+    <h1>{{ title + " " + msg }}</h1>
+    <p> {{ 1 + 2 + getNumber() }} </p>
+    <p>{{ msg }}</p>
+    <input class="form-control" type="text" [(ngModel)]="msg" >
+    <button class="btn btn-success" (click)="fillMsg()" [disabled]="x">Click me</button>
+
+-->
