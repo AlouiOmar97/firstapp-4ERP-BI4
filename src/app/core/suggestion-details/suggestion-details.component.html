@@ -1,0 +1,22 @@
+<div class="container">
+    <h1 class="text-center">Détails Suggestion</h1>
+    <div class="card m-2" *ngIf="suggestion">
+        <div class="card-body">
+            <h5 class="card-title"> {{ suggestion.title }} </h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary"> <span class="text-primary">{{ suggestion.category }}</span> {{ suggestion.date | date:'dd MMM yyyy'  }} </h6>
+            <p class="card-text"> {{ suggestion.description }} </p>
+            <p *ngIf="suggestion.status == 'acceptee'" class="badge text-bg-success"> Acceptée </p>
+            <p *ngIf="suggestion.status == 'refusee'" class="badge text-bg-danger"> Refusée </p>
+            <p *ngIf="suggestion.status == 'en_attente'" class="badge text-bg-warning"> En attente </p>
+            <div *ngIf="suggestion.status != 'refusee'">
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!suggestion">
+        <h3 class="text-center"><i class="bi bi-x-octagon"></i> La suggestion avec l'identifiant {{ id }} n'existe pas ! <i class="bi bi-x-octagon"></i></h3>
+    </div><br>
+    <button (click)="returnToList()" class="btn btn-warning">
+        <i class="bi bi-arrow-left-square"></i>Retourner vers la liste des suggestions.
+    </button>
+</div>

@@ -13,6 +13,7 @@
             <div *ngIf="suggestion.status != 'refusee'">
                 <button (click)="likeSuggestion(suggestion)" class="btn btn-primary"><i class="bi bi-hand-thumbs-up m-2"></i>Like  ({{ suggestion.nbLikes }})  </button>
                 <button (click)="addToFavorite(suggestion)" class="btn btn-secondary m-2"><i class="bi bi-heart m-2"></i>Ajouter aux Favoris</button>
+                <a class="btn btn-info text-white" [routerLink]="['/suggestion/details/', suggestion.id]"><i class="bi bi-info-circle"></i> Details</a>
             </div>
         </div>
         </div>

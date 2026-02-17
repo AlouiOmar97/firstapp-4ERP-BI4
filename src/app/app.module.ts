@@ -9,6 +9,8 @@ import { FooterComponent } from './footer/footer.component';
 import { ListSuggestionComponent } from './core/list-suggestion/list-suggestion.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AnnonceModule } from './annonce/annonce.module';
+import { SuggestionDetailsComponent } from './core/suggestion-details/suggestion-details.component';
 
 @NgModule({
   declarations: [
@@ -17,11 +19,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FooterComponent,
     ListSuggestionComponent,
     HomeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SuggestionDetailsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+   // AnnonceModule,
     AppRoutingModule
   ],
   providers: [],
