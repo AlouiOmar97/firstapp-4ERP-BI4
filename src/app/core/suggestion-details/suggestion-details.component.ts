@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Suggestion } from '../../models/suggestion';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SuggestionService } from '../../services/suggestion.service';
 
 @Component({
   selector: 'app-suggestion-details',
@@ -49,13 +50,18 @@ export class SuggestionDetailsComponent {
     },
   ];
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router){}
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private suggestionService: SuggestionService){}
 
   ngOnInit(){
     this.id = this.activatedRoute.snapshot.params['id']
     console.log('This is the id: ', this.id)
     console.log(this.activatedRoute.snapshot)
-    this.suggestion = this.suggestions.find( s => s.id == +this.id)
+    //this.suggestion = this.suggestions.find( s => s.id == +this.id)
+    this.suggestionService.getSuggestionById(+this.id).subscribe((data)=>{
+      this.suggestion = data.suggestion;
+      console.log(data);
+      
+    });
   }
 
   returnToList(){

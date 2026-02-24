@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Suggestion } from './../../models/suggestion';
+import { SuggestionService } from '../../services/suggestion.service';
 
 @Component({
   selector: 'app-list-suggestion',
@@ -66,5 +67,17 @@ export class ListSuggestionComponent {
           suggestion.title.toLocaleLowerCase().includes(this.searchTerm.toLocaleLowerCase()) ||
           suggestion.category.toLocaleLowerCase().includes(this.searchTerm.toLocaleLowerCase())
       )
+    }
+    constructor(private suggestionService: SuggestionService) { }
+    ngOnInit(): void {
+      this.suggestionService.getAllSuggestion().subscribe((data)=>{
+        this.suggestions = data;
+      });
+    }
+
+    deleteSuggestion(id: number){
+    this.suggestionService.deleteSuggestion(id).subscribe(()=>{
+      this.suggestions = this.suggestions.filter(s => s.id != id);
+    });
     }
 }

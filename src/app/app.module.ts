@@ -9,9 +9,12 @@ import { FooterComponent } from './footer/footer.component';
 import { ListSuggestionComponent } from './core/list-suggestion/list-suggestion.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { AnnonceModule } from './annonce/annonce.module';
+// import { AnnonceModule } from './annonce/annonce.module';
 import { SuggestionDetailsComponent } from './core/suggestion-details/suggestion-details.component';
 import { LoginComponent } from './login/login.component';
+import { AddSuggestionComponent } from './core/add-suggestion/add-suggestion.component';
+import { provideHttpClient } from '@angular/common/http';
+import { UpdateSuggestionComponent } from './core/update-suggestion/update-suggestion.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     NotFoundComponent,
     SuggestionDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    AddSuggestionComponent,
+    UpdateSuggestionComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +36,7 @@ import { LoginComponent } from './login/login.component';
    // AnnonceModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ provideHttpClient() ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
